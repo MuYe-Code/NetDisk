@@ -19,14 +19,11 @@ void commandParser(int sockfd){
     printf("Waiting...\n");
     while(1){
         int ret = recv(sockfd, commandBuff, COMMANDLEN, 0);
-        if(0 == ret){
-            break;
-        }
         printf("ret = %d, command = %s\n", ret, commandBuff);
         if(-1 == ret){
 
         } else if(0 == ret){
-
+            break;
         } else {
             // '\n' --> '\0'
             if('\n' == commandBuff[ret - 1]){
